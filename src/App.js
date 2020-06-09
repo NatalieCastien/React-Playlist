@@ -4,13 +4,13 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import About from "./About";
 
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-function App() {
+const App = () => {
   return (
     <Router>
-      <div>
-        <Header />
+      <Header />
+      <div className="main">
         <Switch>
           <Route path="/about">
             <About />
@@ -24,6 +24,6 @@ function App() {
       </div>
     </Router>
   );
-}
+};
 
 export default App;

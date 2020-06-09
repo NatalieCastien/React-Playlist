@@ -8,7 +8,7 @@ class SongFormContainer extends React.Component {
       title: "",
       artist: "",
       genre: "",
-      rating: 1,
+      rating: "",
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -28,7 +28,7 @@ class SongFormContainer extends React.Component {
       title: "",
       artist: "",
       genre: "",
-      rating: 1,
+      rating: "",
     });
   }
 
