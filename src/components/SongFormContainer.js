@@ -36,7 +36,6 @@ class SongFormContainer extends React.Component {
     return (
       <SongFormComponent
         handleSubmit={this.handleSubmit}
-        // addSong={() => this.props.addSong(this.state)}
         handleChange={this.handleChange}
         data={this.state}
       />

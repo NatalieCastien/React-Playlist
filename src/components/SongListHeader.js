@@ -17,7 +17,7 @@ const SongListHeader = (props) => {
         />
       </li>
       <li>
-        Artist
+        <span>Artist</span>
         <img
           onClick={() => props.sort("artist", "down")}
           className="arrow"
@@ -29,9 +29,38 @@ const SongListHeader = (props) => {
           src="assets/arrow-up.png"
         />
       </li>
-      <li>Genre</li>
       <li>
-        Rating
+        <select
+          className="filter-select"
+          name="filter"
+          value={props.filter}
+          onChange={props.selectFilter}
+        >
+          <option defaultValue value="" disabled>
+            Genre
+          </option>
+          <option value="All">All</option>
+          <option value="Blues">Blues</option>
+          <option value="Classical">Classical</option>
+          <option value="Country">Country</option>
+          <option value="Electronic">Electronic</option>
+          <option value="Jazz">Jazz</option>
+          <option value="Folk">Folk</option>
+          <option value="Funk">Funk</option>
+          <option value="Hiphop">Hiphop</option>
+          <option value="Indi">Indi</option>
+          <option value="Latin">Latin</option>
+          <option value="Metal">Metal</option>
+          <option value="Polka">Polka</option>
+          <option value="Pop">Pop</option>
+          <option value="Rock">Rock</option>
+          <option value="Raggae">Raggae</option>
+          <option value="R&B">R&B</option>
+          <option value="Soul">Soul</option>
+        </select>
+      </li>
+      <li>
+        <span>Rating</span>
         <img
           onClick={() => props.sort("rating", "down")}
           className="arrow"
