@@ -1,26 +1,199 @@
-.input-form {
-  display: flex;
-  justify-content: space-between;
+@import url("https://fonts.googleapis.com/css2?family=Montez&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Parisienne&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Mr+De+Haviland&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Stalemate&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto&family=Stalemate&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Amatic+SC&family=Roboto&family=Stalemate&display=swap");
+
+/* Colors */
+/* green: #8ea7a3
+pink: #c4958a
+greywhite: #edebe8
+white: #f7f7f7 */
+
+body {
+  /* font-family: "Roboto", sans-serif; */
+  font-family: "Amatic SC", cursive;
+  background-color: #edebe8;
+  margin: 0;
+}
+.main {
+  padding: 30px;
+}
+.about-paragraph {
+  font-size: 1.4rem;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 500px;
+  text-align: center;
+}
+/* BUTTONS */
+button {
+  width: 100px;
+  height: 38px;
+  padding: 5px 0px 5px 0;
+  margin: 4px;
+
+  background-color: #c4958a;
+  border: none;
+  border-radius: 2px;
+  color: white;
+  font-family: "Amatic SC", cursive;
+  font-size: 1.3rem;
 }
 
+button:focus {
+  outline: none;
+}
+button:hover {
+  cursor: pointer;
+  background: #e8d7d2;
+  -webkit-box-shadow: inset 0px 0px 5px #c4958a;
+  -moz-box-shadow: inset 0px 0px 5px #c4958a;
+  box-shadow: inset 0px 0px 5px #c4958a;
+  outline: none;
+}
+.header-container {
+  text-align: center;
+  padding-bottom: 5px;
+  position: relative;
+}
+.trash-icon {
+  width: 20px;
+}
+.trash-icon:hover {
+  cursor: pointer;
+}
+.add-song-button {
+  position: absolute;
+  right: 0px;
+  top: 3px;
+}
+/* END BUTTONS */
+
+/* NAV */
+.nav-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto;
+  grid-template-areas: "left center right";
+  align-items: center;
+  background-color: #8ea7a3;
+}
+.nav h1 {
+  grid-area: center;
+  font-size: 3rem;
+  font-family: "Montez", cursive;
+  font-family: "Parisienne", cursive;
+  font-family: "Mr De Haviland", cursive;
+  font-family: "Stalemate", cursive;
+  text-align: center;
+  background-color: #8ea7a3;
+}
+.nav-item:after,
+.nav-item:before {
+  content: "\00a0\00a0\00a0";
+  text-decoration: line-through;
+  padding: 10px;
+  font-family: monospace;
+}
+ul [class^="nav-item"] {
+  list-style: none;
+  font-size: 1.3rem;
+  background-color: #8ea7a3;
+}
+.nav-item-left {
+  text-align: right;
+  padding-left: 0;
+  background-color: #8ea7a3;
+}
+.nav-item-right {
+  text-align: left;
+  padding-left: 0;
+  background-color: #8ea7a3;
+}
+.nav-item-left .nav-item a {
+  grid-area: left;
+  text-decoration: none;
+  color: black;
+  background-color: #8ea7a3;
+}
+.nav-item-right .nav-item a {
+  grid-area: right;
+  text-decoration: none;
+  color: black;
+  background-color: #8ea7a3;
+}
+.nav-item a:hover {
+  cursor: pointer;
+  border-bottom: 0.2px solid black;
+}
+/* END NAV */
+
+/* INPUTFORM */
+.input-form {
+  display: none;
+}
+.input-form-show {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding-top: 15px;
+}
+.input-form input,
+select {
+  background-color: #f7f7f7;
+  padding: 5px 10px 5px 10px;
+  font-size: 1.3rem;
+  font-family: "Amatic SC", cursive;
+  outline: none;
+  border: none;
+  margin: 4px;
+  flex-grow: 4;
+}
+select:hover {
+  cursor: pointer;
+}
+/* END INPUTFORM */
+
+/* SONGLIST */
+.main .h1 {
+  text-align: center;
+  font-size: 2.2rem;
+  border-bottom: 0.3px solid black;
+}
 .songlist-header {
   font-weight: bold;
 }
-
+.arrow {
+  width: 10px;
+  margin-left: 10px;
+  margin-bottom: 3px;
+}
 ul.songlist-header {
   display: grid;
   list-style: none;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(2, 2fr) 1fr 1fr 20px;
   grid-template-rows: 1fr;
+  grid-gap: 5px;
+  padding: 5px 10px 5px 10px;
+  font-size: 1.4rem;
 }
-
 ul.songlist {
   display: grid;
   list-style: none;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(2, 2fr) 1fr 1fr 20px;
   grid-template-rows: auto;
+  grid-gap: 5px;
+  background-color: #f7f7f7;
+  padding: 5px 10px 5px 10px;
+  font-size: 1.4rem;
+  margin: 7px 0 7px 0;
+  border: 1px solid #c4958a;
 }
+/* END SONGLIST */
 
+/* FOOTER */
 .footerStyle {
   background-color: #292c33;
   font-size: 20px;
@@ -32,3 +205,4 @@ ul.songlist {
   height: 60px;
   width: 100%;
 }
+/* END FOOTER */

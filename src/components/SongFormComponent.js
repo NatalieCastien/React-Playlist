@@ -32,6 +32,7 @@ const SongFormComponent = (props) => {
         <option value="Country">Country</option>
         <option value="Electronic">Electronic</option>
         <option value="Jazz">Jazz</option>
+        <option value="Folk">Folk</option>
         <option value="Funk">Funk</option>
         <option value="Hiphop">Hiphop</option>
         <option value="Indi">Indi</option>
@@ -50,6 +51,9 @@ const SongFormComponent = (props) => {
         value={props.data.rating}
         onChange={props.handleChange}
       >
+        <option value="" disabled>
+          Rating
+        </option>
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>

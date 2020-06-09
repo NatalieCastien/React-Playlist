@@ -4,26 +4,27 @@ import { Link } from "react-router-dom";
 class Header extends React.Component {
   render() {
     return (
-      <nav className="Nav">
-        <div className="Nav__container">
-          <Link to="/" className="Nav__brand">
-            <img src="logo.svg" className="Nav__logo" />
-          </Link>
+      <nav className="nav">
+        <div className="nav-container">
+          {/* <Link to="/" className="Nav__brand"> */}
+          <h1>React To Music</h1>
+          {/* <img src="logo.svg" className="Nav__logo" /> */}
+          {/* </Link> */}
 
-          <div className="Nav__right">
-            <ul className="Nav__item-wrapper">
-              <li className="Nav__item">
-                <Link className="Nav__link" to="/">
-                  Home
-                </Link>
-              </li>
-              <li className="Nav__item">
-                <Link className="Nav__link" to="/about">
-                  About
-                </Link>
-              </li>
-            </ul>
-          </div>
+          <ul className="nav-item-left">
+            <li className="nav-item">
+              <Link className="nav-link" to="/">
+                Home
+              </Link>
+            </li>
+          </ul>
+          <ul className="nav-item-right">
+            <li className="nav-item">
+              <Link className="nav-link" to="/about">
+                About
+              </Link>
+            </li>
+          </ul>
         </div>
       </nav>
     );
