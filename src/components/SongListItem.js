@@ -8,7 +8,7 @@ const SongListItem = (props) => {
       <li>{props.song.genre}</li>
       <li>{props.song.rating}</li>
       <li>
-        <button onClick={() => props.deleteSong(props.song)}>Delete</button>
+        <button onClick={() => props.deleteSong(props.song.id)}>Delete</button>
       </li>
     </ul>
   );
