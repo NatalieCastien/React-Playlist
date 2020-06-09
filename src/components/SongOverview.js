@@ -9,12 +9,16 @@ class SongOverview extends Component {
     super();
     this.state = {
       songs: [],
+      isLoading: true,
+      filter: "",
     };
     this.addSong = this.addSong.bind(this);
     this.deleteSong = this.deleteSong.bind(this);
     this.getSongs = this.getSongs.bind(this);
     this.toggleForm = this.toggleForm.bind(this);
-    this.sort = this.sort.bind(this);
+    this.sortList = this.sortList.bind(this);
+    this.selectFilter = this.selectFilter.bind(this);
+    this.getFilteredSongs = this.getFilteredSongs.bind(this);
   }
 
   async getSongs() {
@@ -29,14 +33,33 @@ class SongOverview extends Component {
           rating: data[key].rating,
         }));
         this.setState({ songs: result });
-        console.log(result);
       })
       .catch((error) => console.log(error));
-    console.log(this.state);
+    this.setState({ isLoading: false });
   }
 
   async componentDidMount() {
     this.getSongs();
+  }
+
+  getFilteredSongs(genre) {
+    fetch("https://music-database-1dcdd.firebaseio.com/songs.json")
+      .then((response) => response.json())
+      .then((data) => {
+        const result = Object.keys(data).map((key) => ({
+          id: key,
+          title: data[key].title,
+          artist: data[key].artist,
+          genre: data[key].genre,
+          rating: data[key].rating,
+        }));
+        const filteredSongs = result.filter((song) => {
+          return song.genre === genre;
+        });
+        this.setState({ songs: filteredSongs });
+      })
+      .catch((error) => console.log(error));
+    this.setState({ isLoading: false });
   }
 
   addSong(song) {
@@ -53,10 +76,10 @@ class SongOverview extends Component {
     fetch("https://music-database-1dcdd.firebaseio.com/songs.json", request)
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         this.getSongs();
       })
       .catch((error) => console.log(error));
+    // Hide the form after submit
     this.toggleForm();
   }
 
@@ -66,19 +89,12 @@ class SongOverview extends Component {
     fetch(apiUrl, { method: "DELETE" })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         this.getSongs();
       })
       .catch((error) => console.log(error));
   }
 
-  toggleForm() {
-    const inputForm = document.getElementsByClassName("input-form")[0];
-    inputForm.classList.toggle("input-form-show");
-  }
-
-  sort(type, direction) {
-    console.log(type, direction);
+  sortList(type, direction) {
     const songs = [...this.state.songs];
     const sortedArray =
       type === "title"
@@ -94,8 +110,24 @@ class SongOverview extends Component {
           ? songs.sort((a, b) => a.rating.localeCompare(b.rating))
           : songs.sort((a, b) => b.rating.localeCompare(a.rating))
         : null;
-    console.log(sortedArray);
     this.setState({ songs: sortedArray });
+  }
+
+  selectFilter(event) {
+    const { name, value } = event.target;
+    this.setState(() => {
+      const newState = { [name]: value };
+      return newState;
+    });
+    const filter = value;
+    filter === "All" ? this.getSongs() : this.getFilteredSongs(filter);
+  }
+
+  toggleForm() {
+    const inputForm = document.getElementsByClassName("input-form")[0];
+    inputForm.classList.toggle("input-form-show");
+    const button = document.getElementsByClassName("add-song-button")[0];
+    button.classList.toggle("add-song-button-hide");
   }
 
   render() {
@@ -108,8 +140,16 @@ class SongOverview extends Component {
           </button>
         </div>
         <SongFormContainer addSong={this.addSong} />
-        <SongListHeader sort={this.sort} />
-        <SongList songs={this.state.songs} deleteSong={this.deleteSong} />
+        <SongListHeader
+          sort={this.sortList}
+          filter={this.state.filter}
+          selectFilter={this.selectFilter}
+        />
+        {this.state.isLoading ? (
+          <h1>Loading...</h1>
+        ) : (
+          <SongList songs={this.state.songs} deleteSong={this.deleteSong} />
+        )}
       </div>
     );
   }

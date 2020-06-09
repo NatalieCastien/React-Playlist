@@ -6,15 +6,12 @@ class Header extends React.Component {
     return (
       <nav className="nav">
         <div className="nav-container">
-          {/* <Link to="/" className="Nav__brand"> */}
           <h1>React To Music</h1>
-          {/* <img src="logo.svg" className="Nav__logo" /> */}
-          {/* </Link> */}
 
           <ul className="nav-item-left">
             <li className="nav-item">
               <Link className="nav-link" to="/">
-                Home
+                Songs
               </Link>
             </li>
           </ul>
