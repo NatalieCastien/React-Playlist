@@ -11,9 +11,10 @@ const About = () => {
         <p>
           Hi! <br />
           <br />
-          My name is Natalie, I am 28 years old and I live in Alkmaar in the
-          Netherlands. My passions are playing the guitar, singing, drawing and
-          programming. I love creating things, especially for others. <br />
+          My name is Natalie, I am 28 years old and I live in the Netherlands.
+          My passions are playing the guitar, singing, drawing and programming.
+          I love creating things, especially when others can enjoy it as well.{" "}
+          <br />
           <br />I built this website as a part of a Front-end development
           course. It's a web application to add music to the songlist and you're
           able to sort this list, filter on genre and delete songs as you will.
