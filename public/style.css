@@ -1,0 +1,34 @@
+.input-form {
+  display: flex;
+  justify-content: space-between;
+}
+
+.songlist-header {
+  font-weight: bold;
+}
+
+ul.songlist-header {
+  display: grid;
+  list-style: none;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: 1fr;
+}
+
+ul.songlist {
+  display: grid;
+  list-style: none;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: auto;
+}
+
+.footerStyle {
+  background-color: #292c33;
+  font-size: 20px;
+  color: white;
+  text-align: center;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  height: 60px;
+  width: 100%;
+}
